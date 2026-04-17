@@ -70,5 +70,15 @@ def set_max_tokens(max_tokens):
     print("Max tokens updated successfully.")
 
 
+@manage_config.command()
+@click.argument('timeout', type=float)
+def set_timeout(timeout):
+    """Set the request timeout in seconds for API calls."""
+    config = read_config() or {}
+    config['timeout'] = timeout
+    store_config(config)
+    print("Timeout updated successfully.")
+
+
 if __name__ == '__main__':
     manage_config()
